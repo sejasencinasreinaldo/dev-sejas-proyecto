@@ -308,7 +308,7 @@
                 <li class="light-blue">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
 
-                        <img src="{{asset(Auth::User()->perfil)}}"style="width:60px;height:45px;" class="nav-user-photo" />
+                        <img src="{{asset(Auth::User()->imagen)}}"style="width:60px;height:45px;" class="nav-user-photo" />
 
 
 

@@ -85,6 +85,23 @@
                                         @endif
 
                                     </div>
+
+                                    <div class="form-group has-info">
+                                        <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Fecha de Nacimiento:</label>
+
+                                        <div class="col-xs-12 col-sm-5">
+																	<span class="block input-icon input-icon-right">
+																		<input name="fecha_nacimiento" type="date" id="" class="width-100"value="{{ old('fecha_nacimiento') }}" />
+																		<i class=""></i>
+																	</span>
+                                        </div>
+                                        @if($errors->has('ape_mat'))
+                                            <div class="help-block col-xs-12 col-sm-reset inline red"> {{ $errors->first('ape_mat') }} </div>
+
+                                        @endif
+
+                                    </div>
+
                                     <div class="form-group has-info">
                                         <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Nombre de Usuario:</label>
 

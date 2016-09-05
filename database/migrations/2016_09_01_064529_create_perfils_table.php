@@ -15,6 +15,15 @@ class CreatePerfilsTable extends Migration
     {
         Schema::create('perfils', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('idUsuario')->unsigned();
+            $table->index('idUsuario');
+            $table->string('facebook');
+            $table->string('email');
+            $table->string('twitter');
+            $table->string('pinterset');
+            $table->foreign('idUsuario')
+                ->references('id_usuario')->on('usuarios')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

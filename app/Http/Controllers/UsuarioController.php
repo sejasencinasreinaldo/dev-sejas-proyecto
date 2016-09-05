@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Usuario;
+use App\Perfil;
 use Session;
 use Auth;
 
@@ -24,7 +25,7 @@ class UsuarioController extends Controller
         $credenciales = $peticion->only(['username', 'password']);
 
         if(Auth::attempt($credenciales)){
-            if(Auth::user()->tipo=='administrador') {
+            if(Auth::user()->tipo=='Administrador') {
                 return redirect('/administrador/home');
             }else{
                 return Auth::user()->tipo;
@@ -39,6 +40,19 @@ class UsuarioController extends Controller
 
         Auth::logout();
         return redirect("/");
+    }
+    public function test(){
+        $usuario=Usuario::all();
+        $per=Perfil::find(6);
+        $cont=count($usuario);
+        //$id_usuario=$usuario->id_usuario;
+       // $data=Perfil::where('idUsuario', 1)->first();
+        //$perfil= Perfil::where('idUsuario',$id_usuario);
+
+        return view("prueba")->with("per",$per);
+
+        dd($cont);
+
     }
 }
 

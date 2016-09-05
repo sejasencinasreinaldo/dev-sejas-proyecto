@@ -23,10 +23,10 @@
                     <div>
                         <span class="profile-picture">
                             <div class="form-group col-xs-12">
-                                @if($usuario->perfil=="")
-                                    {{$usuario->perfil="imagenes/perfil/user.png"}}
+                                @if($usuario->imagen=="")
+                                    {{$usuario->imagen="imagenes/perfil/user.png"}}
                                     @endif
-                                <img id="fotografia_usuario" class=" img-responsive" alt="Alex's Avatar" src="{{asset($usuario->perfil)}}"style="width:300px;height:200px;"/>
+                                <img id="fotografia_usuario" class=" img-responsive" alt="Alex's Avatar" src="{{asset($usuario->imagen)}}"style="width:300px;height:200px;"/>
                             </div>
 
                         </span>
@@ -132,6 +132,16 @@
                                 <input type="text" id="form-field-pass1" name="ape_mat" value="{{$usuario->ape_mat}}" class="width-100" />
                             </div>
                         </div>
+
+                        <div class="profile-info-row">
+                            <div class="profile-info-name">Fecha Nacimiento: </div>
+
+                            <div class="profile-info-value col-xs-12 col-sm-12">
+
+                                <input type="date" id="form-field-pass1" name="fecha_nacimiento" value="{{$usuario->fecha_nacimiento}}" class="width-100" />
+                            </div>
+                        </div>
+
                         <div class="profile-info-row">
                             <div class="profile-info-name">Nombre de Usuario</div>
 
@@ -156,8 +166,36 @@
                                 </select>
                             </div>
                         </div>
+                        @if(count($perfil)!=0)
+                        <div class="profile-info-row">
+                            <div class="profile-info-name">Correo</div>
 
+                            <div class="profile-info-value col-xs-12 col-sm-12">
+                                <input type="email" id="form-field-pass1"name="email" value="{{$perfil->email}}" class="width-100" />
+                            </div>
+                        </div>
+                        <div class="profile-info-row">
+                            <div class="profile-info-name">Facebook</div>
 
+                            <div class="profile-info-value col-xs-12 col-sm-12">
+                                <input type="text" id="form-field-pass1"name="facebook" value="{{$perfil->facebook}}" class="width-100" />
+                            </div>
+                        </div>
+                        <div class="profile-info-row">
+                            <div class="profile-info-name">Twitter</div>
+
+                            <div class="profile-info-value col-xs-12 col-sm-12">
+                                <input type="text" id="form-field-pass1"name="twitter" value="{{$perfil->twitter}}" class="width-100" />
+                            </div>
+                        </div>
+                        <div class="profile-info-row">
+                            <div class="profile-info-name">Pinterset</div>
+
+                            <div class="profile-info-value col-xs-12 col-sm-12">
+                                <input type="text" id="form-field-pass1"name="pinterset" value="{{$perfil->pinterset}}" class="width-100" />
+                            </div>
+                        </div>
+                        @endif
 
                     </div>
                     <div class="clearfix form-actions">

@@ -19,7 +19,7 @@ Route::get('usuario/login','UsuarioController@login');
 
 Route::post('usuario/autenticar','UsuarioController@autenticar');
 Route::get('usuario/logout','UsuarioController@logout');
-
+Route::get('test','UsuarioController@test');
 
 // ruta para poder acceder a la pagina principal del administrador
 Route::get('administrador/home','AdministradorController@home');

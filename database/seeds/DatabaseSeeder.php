@@ -13,13 +13,13 @@ class DatabaseSeeder extends Seeder
         {
 
             $this->call(AdministradorSeeder::class);
-            $this->call(GerenteSeeder::class);
-            $this->call(ApoyoSeeder::class);
-            $this->call(ClienteSeeder::class);
-            $this->call(DjSeeder::class);
-            $this->call(GrupoSeeder::class);
-            $this->call(LuminoSeeder::class);
-            $this->call(SonidistaSeeder::class);
+           // $this->call(GerenteSeeder::class);
+            //$this->call(ApoyoSeeder::class);
+            //$this->call(ClienteSeeder::class);
+            //$this->call(DjSeeder::class);
+            //$this->call(GrupoSeeder::class);
+            //$this->call(LuminoSeeder::class);
+            //$this->call(SonidistaSeeder::class);
 
 
     }

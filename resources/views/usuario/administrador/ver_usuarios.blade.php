@@ -34,8 +34,8 @@
         <th>Apellido Materno</th>
         <th>Username</th>
         <th>tipo</th>
-        <th>perfil</th>
-        <th></th>
+        <th>Fecha Nacimiento</th>
+        <th>Opciones</th>
     </tr>
     </thead>
     <tbody>
@@ -48,7 +48,7 @@
             <td>{{$usuario->username}}</td>
             <td>@include("usuario.datos.tipos")</td>
 
-            <td>{{$usuario->perfil}}</td>
+            <td>{{$usuario->fecha_nacimiento}}</td>
             <td>
                 <div class="hidden-sm hidden-xs action-buttons">
                     <a class="blue btn-ver" href="#">

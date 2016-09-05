@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Perfil;
 use App\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Storage;
 use App\Http\Requests;
+use Auth;
 
 class AdministradorController extends Controller
 {
@@ -29,10 +31,10 @@ class AdministradorController extends Controller
         $usuario->nombre = $peticion->nombre;
         $usuario->ape_pat = $peticion->ape_pat;
         $usuario->ape_mat=$peticion->ape_mat;
+        $usuario->fecha_nacimiento=$peticion->fecha_nacimiento;
         $usuario->username=$peticion->username;
         $usuario->password=$peticion->password;
-        $usuario->tipo=$peticion->tipo;
-        $usuario->perfil="imagenes/perfil/user.png";
+        $usuario->imagen="imagenes/perfil/user.png";
         $resultado=$usuario->save();
         if($resultado){
 
@@ -42,14 +44,18 @@ class AdministradorController extends Controller
     }
     public function ver_usuarios(){
         $lista= Usuario::all();
+
         $parametros=['usuarios'=>$lista];
         return view("usuario.administrador.ver_usuarios",$parametros);
     }
     public  function editar_usuario($id){
         $usuario=Usuario::find($id);
+        $perfil=Perfil::where('idUsuario', $id)->first();
         $contador=count($usuario);
         if($contador>0){
-            return view("usuario.administrador.form_editar_usuario")->with("usuario",$usuario);
+            return view("usuario.administrador.form_editar_usuario")
+                ->with("usuario",$usuario)
+                ->with("perfil",$perfil);
         }
         else
         {
@@ -60,12 +66,21 @@ class AdministradorController extends Controller
         $data=$peticion->all();
         $id_usuario=$data["id_usuario"];
         $usuario=Usuario::find($id_usuario);
+        $perfil=Perfil::where('idUsuario', $id_usuario)->first();
+
         $usuario->nombre=$data["nombre"];
         $usuario->ape_pat=$data["ape_pat"];
         $usuario->ape_mat=$data["ape_mat"];
+        $usuario->fecha_nacimiento=$data["fecha_nacimiento"];
         $usuario->username=$data["username"];
         $usuario->tipo=$data["tipo"];
         $resultado=$usuario->save();
+
+        $perfil->facebook=   $data["facebook"];
+        $perfil->email=      $data["email"];
+        $perfil->twitter=    $data["twitter"];
+        $perfil->pinterset=  $data["pinterset"];
+       $res=$perfil->save();
         if($resultado){
             return view("mensajes.msj_correcto")->with("msj","Datos actualizados Correctamente");
         }
@@ -121,7 +136,7 @@ class AdministradorController extends Controller
             if ($r1){
 
                 $usuario=Usuario::find($id);
-                $usuario->perfil=$rutadelaimagen;
+                $usuario->imagen=$rutadelaimagen;
                 $r2=$usuario->save();
                 return view("mensajes.msj_correcto")->with("msj","Imagen agregada correctamente");
             }
@@ -139,9 +154,12 @@ class AdministradorController extends Controller
     }
     public function ver_usuario($id){
           $usuario=Usuario::find($id);
+        $perfil=Perfil::where('idUsuario',$id)->first();
         $contador=count($usuario);
         if($contador>0){
-            return view("usuario.administrador.perfil_usuario")->with("usuario",$usuario);
+            return view("usuario.administrador.perfil_usuario")
+                ->with("usuario",$usuario)
+                ->with("perfil",$perfil);
         }
         else
         {

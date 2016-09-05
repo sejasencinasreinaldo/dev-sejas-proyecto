@@ -14,7 +14,16 @@ class CreateEquiposTable extends Migration
     public function up()
     {
         Schema::create('equipos', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id_equipo');
+            $table->string('nombre');
+            $table->string('marca');
+            $table->string('color');
+            $table->enum('estado',[1,0])->default(1);
+            $table->enum('tipo_equipo', ['Sub', 'Agudo','Luminaria','Consola','Pc','Cable','Monitor','Microfono','Caja','DriveRack']);
+            $table->string('serie');
+            $table->string('seril_no');
+            $table->string('caracteristicas');
+            $table->string('imagen_equipo');
             $table->timestamps();
         });
     }

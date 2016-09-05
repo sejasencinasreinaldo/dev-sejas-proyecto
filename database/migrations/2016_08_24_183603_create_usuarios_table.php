@@ -18,10 +18,11 @@ class CreateUsuariosTable extends Migration
             $table->string('nombre');
             $table->string('ape_pat');
             $table->string('ape_mat');
+            $table->string('fecha_nacimiento');
             $table->string('username');
             $table->string('password');
-            $table->enum('tipo', ['administrador', 'gerente','sonidista','lumino','cliente','apoyo','grupo','dj']);
-            $table->string('perfil');
+            $table->enum('tipo', ['Administrador', 'Gerente','Sonidista','Luminotecnico','Cliente','Apoyo','Grupo','Dj']);
+            $table->string('imagen');
             $table->enum('activo', [1, 0])->default(1);
             $table->rememberToken();
             $table->timestamps();

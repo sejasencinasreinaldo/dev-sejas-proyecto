@@ -1,7 +1,7 @@
 <div class="row ">
     <div class="col-xs-12 col-sm-3 center">
 		<span class="profile-picture">
-		    <img class="editable img-responsive" alt="User's Avatar" id="avatar2" src="{{asset($usuario->perfil)}}" />
+		    <img class="editable img-responsive" alt="User's Avatar" id="avatar2" src="{{asset($usuario->imagen)}}" />
 		</span>
 
         <div class="space space-4"></div>
@@ -77,14 +77,14 @@
 
         <div class="profile-user-info">
 
-
+        @if(count($perfil)!=0)
             <div class="profile-info-row">
                 <div class="profile-info-name">
                     <i class="middle ace-icon fa fa-facebook-square bigger-150 blue"></i>
                 </div>
 
                 <div class="profile-info-value">
-                    <a href="#">Facebook</a>
+                    <a href="{{$perfil->facebook}}">Facebook</a>
                 </div>
             </div>
 
@@ -94,9 +94,19 @@
                 </div>
 
                 <div class="profile-info-value">
-                    <a href="#">Twitter</a>
+                    <a href="{{$perfil->twitter}}">Twitter</a>
                 </div>
             </div>
+            <div class="profile-info-row">
+                <div class="profile-info-name">
+                    <i class="middle ace-icon fa fa-google-plus-square bigger-150 light-blue"></i>
+                </div>
+
+                <div class="profile-info-value">
+                    <a href="#">Gmail</a>
+                </div>
+            </div>
+            @endif
         </div>
     </div><!-- /.col -->
 
